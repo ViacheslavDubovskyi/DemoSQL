@@ -19,7 +19,7 @@ FROM schedule s
          LEFT JOIN homework h ON l.homework_id = h.id
          LEFT JOIN schedule_lesson ON schedule_id = schedule_lesson.lesson_id;
 
-SELECT Schedule.name, count(Schedule.lesson_id) AS lesson_count
+SELECT Schedule.id, Schedule.name, COUNT(sl.lesson_id) AS lesson_count
 FROM Schedule
-         LEFT JOIN schedule_lesson sl on Schedule.id = sl.schedule_id
-GROUP BY Schedule_id, Schedule.name;
+         LEFT JOIN Schedule_Lesson sl ON Schedule.id = sl.schedule_id
+GROUP BY Schedule.id, Schedule.name;
