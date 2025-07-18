@@ -15,11 +15,12 @@ SELECT s.name      AS schedule_name,
        l.name      AS lesson_name,
        l.updatedAt AS lesson_updated
 FROM schedule s
-         LEFT JOIN lesson l ON s.lesson_id = l.id
-         LEFT JOIN schedule_lesson ON schedule_id = schedule_lesson.lesson_id;
+         LEFT JOIN schedule_lesson sl ON s.id = sl.schedule_id
+         LEFT JOIN lesson l ON l.id = sl.lesson_id;
 
-SELECT Schedule.name, COUNT(sl.lesson_id) AS lesson_count
-FROM Schedule
-         LEFT JOIN Schedule_Lesson sl ON Schedule.id = sl.schedule_id
-GROUP BY Schedule.name
+
+SELECT s.id, s.name, COUNT(sl.lesson_id) AS lesson_count
+FROM Schedule s
+         LEFT JOIN Schedule_Lesson sl ON s.id = sl.schedule_id
+GROUP BY s.id, s.name
 ORDER BY lesson_count DESC;

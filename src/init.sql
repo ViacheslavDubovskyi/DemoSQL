@@ -14,13 +14,12 @@ CREATE TABLE IF NOT EXISTS Lesson
     FOREIGN KEY (homework_id) REFERENCES Homework (id)
 
 );
+
 CREATE TABLE IF NOT EXISTS Schedule
 (
     id        SERIAL PRIMARY KEY,
     name      VARCHAR(255) NOT NULL,
-    updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    lesson_id INT,
-    FOREIGN KEY (lesson_id) REFERENCES Lesson (id)
+    updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE IF NOT EXISTS schedule_lesson
