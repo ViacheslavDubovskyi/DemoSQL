@@ -16,7 +16,6 @@ SELECT s.name      AS schedule_name,
        l.updatedAt AS lesson_updated
 FROM schedule s
          LEFT JOIN lesson l ON s.lesson_id = l.id
-         LEFT JOIN homework h ON l.homework_id = h.id
          LEFT JOIN schedule_lesson ON schedule_id = schedule_lesson.lesson_id;
 
 SELECT Schedule.name, COUNT(sl.lesson_id) AS lesson_count
